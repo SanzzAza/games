@@ -1,0 +1,419 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxqxqxqxqxqxq"]
+
+[ext_resource type="Script" path="res://main.gd" id="1"]
+[ext_resource type="Script" path="res://game_manager.gd" id="2"]
+[ext_resource type="Texture2D" path="res://background.png" id="3"]
+[ext_resource type="Texture2D" path="res://youtuber_char.png" id="4"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(240, 360)
+texture = ExtResource("3")
+
+[node name="Character" type="Sprite2D" parent="."]
+position = Vector2(240, 300)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(240, 360)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="Panel" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 60.0
+
+[node name="Stats" type="HBoxContainer" parent="CanvasLayer/UI/TopBar"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 470.0
+offset_bottom = 55.0
+theme_override_constants/separation = 15
+
+[node name="SubsLabel" type="Label" parent="CanvasLayer/UI/TopBar/Stats"]
+layout_mode = 2
+text = "📺 0"
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer/UI/TopBar/Stats"]
+layout_mode = 2
+text = "💰 Rp 50.000"
+
+[node name="EnergyLabel" type="Label" parent="CanvasLayer/UI/TopBar/Stats"]
+layout_mode = 2
+text = "⚡ 100%"
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer/UI/TopBar/Stats"]
+layout_mode = 2
+text = "🕐 Senin, 08:00"
+
+[node name="BottomPanel" type="Panel" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ActionButtons" type="HBoxContainer" parent="CanvasLayer/UI/BottomPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -50.0
+offset_right = 230.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="ContentBtn" type="Button" parent="CanvasLayer/UI/BottomPanel/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "📹 Buat Konten"
+
+[node name="LiveBtn" type="Button" parent="CanvasLayer/UI/BottomPanel/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "🔴 Livestream"
+
+[node name="UpgradeBtn" type="Button" parent="CanvasLayer/UI/BottomPanel/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "🛒 Upgrade"
+
+[node name="LifeBtn" type="Button" parent="CanvasLayer/UI/BottomPanel/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "🏠 Kehidupan"
+
+[node name="ContentDialog" type="Panel" parent="CanvasLayer/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -250.0
+offset_right = 200.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/UI/ContentDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 390.0
+offset_bottom = 35.0
+text = "📹 BUAT KONTEN YOUTUBE"
+horizontal_alignment = 1
+
+[node name="GenreList" type="VBoxContainer" parent="CanvasLayer/UI/ContentDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 45.0
+offset_right = 390.0
+offset_bottom = 450.0
+theme_override_constants/separation = 5
+
+[node name="CloseBtn" type="Button" parent="CanvasLayer/UI/ContentDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 460.0
+offset_right = 390.0
+offset_bottom = 490.0
+text = "Tutup"
+
+[node name="LiveDialog" type="Panel" parent="CanvasLayer/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -300.0
+offset_right = 220.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LiveTitle" type="Label" parent="CanvasLayer/UI/LiveDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 430.0
+offset_bottom = 35.0
+text = "🔴 LIVESTREAM - 0 viewers"
+horizontal_alignment = 1
+
+[node name="ChatScroll" type="ScrollContainer" parent="CanvasLayer/UI/LiveDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 45.0
+offset_right = 430.0
+offset_bottom = 500.0
+follow_focus = true
+
+[node name="ChatBox" type="VBoxContainer" parent="CanvasLayer/UI/LiveDialog/ChatScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 3
+
+[node name="LiveStats" type="Label" parent="CanvasLayer/UI/LiveDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 510.0
+offset_right = 430.0
+offset_bottom = 535.0
+text = "💰 Rp 0 | ⏱️ 00:00"
+horizontal_alignment = 1
+
+[node name="EndLiveBtn" type="Button" parent="CanvasLayer/UI/LiveDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 545.0
+offset_right = 430.0
+offset_bottom = 580.0
+text = "End Livestream"
+
+[node name="UpgradeDialog" type="Panel" parent="CanvasLayer/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -280.0
+offset_right = 220.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpgradeTitle" type="Label" parent="CanvasLayer/UI/UpgradeDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 430.0
+offset_bottom = 35.0
+text = "🛒 UPGRADE SETUP"
+horizontal_alignment = 1
+
+[node name="UpgradeScroll" type="ScrollContainer" parent="CanvasLayer/UI/UpgradeDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 45.0
+offset_right = 430.0
+offset_bottom = 510.0
+
+[node name="UpgradeList" type="VBoxContainer" parent="CanvasLayer/UI/UpgradeDialog/UpgradeScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="CloseUpgradeBtn" type="Button" parent="CanvasLayer/UI/UpgradeDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 520.0
+offset_right = 430.0
+offset_bottom = 550.0
+text = "Tutup"
+
+[node name="LifeDialog" type="Panel" parent="CanvasLayer/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LifeTitle" type="Label" parent="CanvasLayer/UI/LifeDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 390.0
+offset_bottom = 35.0
+text = "🏠 KEHIDUPAN SEHARI-HARI"
+horizontal_alignment = 1
+
+[node name="LifeActions" type="VBoxContainer" parent="CanvasLayer/UI/LifeDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 45.0
+offset_right = 390.0
+offset_bottom = 350.0
+theme_override_constants/separation = 5
+
+[node name="CloseLifeBtn" type="Button" parent="CanvasLayer/UI/LifeDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 360.0
+offset_right = 390.0
+offset_bottom = 390.0
+text = "Tutup"
+
+[node name="NotificationLabel" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 80.0
+offset_right = 200.0
+offset_bottom = 130.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="VideoResultDialog" type="Panel" parent="CanvasLayer/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -280.0
+offset_right = 220.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResultTitle" type="Label" parent="CanvasLayer/UI/VideoResultDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 430.0
+offset_bottom = 40.0
+text = "📊 HASIL VIDEO"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+
+[node name="VideoTitle" type="Label" parent="CanvasLayer/UI/VideoResultDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 50.0
+offset_right = 430.0
+offset_bottom = 90.0
+text = "Judul Video"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ViewsLabel" type="Label" parent="CanvasLayer/UI/VideoResultDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 100.0
+offset_right = 430.0
+offset_bottom = 130.0
+text = "👁️ 0 views"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 20
+
+[node name="SubsGainLabel" type="Label" parent="CanvasLayer/UI/VideoResultDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 140.0
+offset_right = 430.0
+offset_bottom = 170.0
+text = "📺 +0 subscribers"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 16
+
+[node name="MoneyGainLabel" type="Label" parent="CanvasLayer/UI/VideoResultDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 180.0
+offset_right = 430.0
+offset_bottom = 210.0
+text = "💰 +Rp 0"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 16
+
+[node name="StatusLabel" type="Label" parent="CanvasLayer/UI/VideoResultDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 220.0
+offset_right = 430.0
+offset_bottom = 260.0
+text = "🔥 VIRAL!"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 24
+
+[node name="CommentsScroll" type="ScrollContainer" parent="CanvasLayer/UI/VideoResultDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 270.0
+offset_right = 430.0
+offset_bottom = 480.0
+
+[node name="CommentsBox" type="VBoxContainer" parent="CanvasLayer/UI/VideoResultDialog/CommentsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+
+[node name="CloseResultBtn" type="Button" parent="CanvasLayer/UI/VideoResultDialog"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 490.0
+offset_right = 430.0
+offset_bottom = 550.0
+text = "Lanjut"
+theme_override_font_sizes/font_size = 18
+
+[node name="EventTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="LiveTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="pressed" from="CanvasLayer/UI/BottomPanel/ActionButtons/ContentBtn" to="." method="_on_content_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/BottomPanel/ActionButtons/LiveBtn" to="." method="_on_live_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/BottomPanel/ActionButtons/UpgradeBtn" to="." method="_on_upgrade_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/BottomPanel/ActionButtons/LifeBtn" to="." method="_on_life_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/ContentDialog/CloseBtn" to="." method="_on_close_content_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/LiveDialog/EndLiveBtn" to="." method="_on_end_live_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/UpgradeDialog/CloseUpgradeBtn" to="." method="_on_close_upgrade_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/LifeDialog/CloseLifeBtn" to="." method="_on_close_life_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/VideoResultDialog/CloseResultBtn" to="." method="_on_close_result_pressed"]
+[connection signal="timeout" from="EventTimer" to="." method="_on_event_timer_timeout"]
+[connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]
