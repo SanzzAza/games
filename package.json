@@ -1,0 +1,24 @@
+{
+  "name": "youtuber-indonesia-simulator",
+  "version": "1.0.0",
+  "description": "🎬 Game simulasi menjadi YouTuber Indonesia - dari HP kentang jadi SULTAN YOUTUBE!",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 3000",
+    "start": "python -m http.server 3000"
+  },
+  "keywords": [
+    "godot",
+    "game",
+    "simulator",
+    "youtuber",
+    "indonesia",
+    "web",
+    "webgl"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
